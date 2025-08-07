@@ -1,16 +1,28 @@
+import java.util.Scanner;
+
 public class Task3 {
     
     public static void main(String[] args) {
-        int start = 1984;
-        int cicle = 60;
-        int minCicle = 12;
+        Scanner sc = new Scanner(System.in);
 
-        String[] colors = {"зеленый", "красный", "желтый", "белый", "черный"};
-        String[] animals = {"крыса", "корова", "тигр", "кролик", "дракон", "змея", "лошадь", "овца", "обезьяна", "курица", "собака", "свинья"};
-        
+        System.out.print("Введите год от 1984 по наше время: ");
+        int currentYear = sc.nextInt();
 
-        for (int i = 0; i < animals.length; i++) {
-            System.out.println(animals[i]);
+        if (currentYear > 2025) {
+            System.out.println("Вы ввели год в будущем времени, расчёт будет произведен согласно старояпонскому календарю на указанный год: ");
         }
+
+        if (currentYear < 0) {
+            System.out.println("Вы ввели год до нашей эры, расчёт будет произведен согласно старояпонскому календарю на указанный год: ");
+        }
+
+        int start = Math.abs(currentYear - 1984);
+        int colorIndex = start % 60 % 10 / 2;
+        int animalIndex = start % 60 % 12;
+
+        String[] colors = {"зелено", "красно", "желто", "бело", "черно"};
+        String[] animals = {"й крысы", "й коровы", "го тигра", "го зайца", "го дракона", "й змеи", "й лошади", "й овцы", "й обезьяны", "й курицы", "й собаки", "й свиньи"};
+        
+        System.out.println("Это год: " + colors[colorIndex] + animals[animalIndex]);
     }
 }
